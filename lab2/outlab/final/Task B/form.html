@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		pre{
+			padding: 0px;
+			margin: 0px;
+		}
+	</style>
+</head>
+<body>
+
+<form name = "my_form" action="https://www.cse.iitb.ac.in/~sharat/php/example/form.php" method="post" onsubmit="return myFunction()" novalidate>
+	<fieldset>
+    	<legend>Personal information:</legend>
+		<pre>Name    : <input type="text" name="text" value = ""></pre>
+		<br><br>
+		<pre>Password: <input type="password" name="pass"></pre>
+		<br><br>
+		<pre>Email   : <input type="text" name="email"></pre>
+		<br><br>
+		<input type="submit" value="Submit">
+	</fieldset>
+</form>
+<p id = "demo"></p>
+
+<script>
+function myFunction() {
+	var name = document.forms["my_form"].text.value;
+	var password = document.forms["my_form"].pass.value;
+	var email = document.forms["my_form"].email.value;
+	if(name.length<6 || name.length > 50){
+		window.alert("Enter name in 6-50 characters");
+		return false;
+	}
+	if(password.length<8 || password.length > 20){
+		window.alert("Enter password in 8-20 characters");
+		return false;
+	}
+	else{
+		var x = password.search("@");
+		var y = password.search("!");
+		var z = -1
+		for(var i = 0; i<password.length;i++){
+			if(password.charCodeAt(i)==36){
+				z = i;
+				break;
+			}
+		}
+		var w = password.search("_");
+		if(x==-1 && y==-1 && z==-1 && w==-1){
+			window.alert("Atleast one of the following special character needed in password: $,!,@,_");
+			return false;
+		}
+	}
+	var x = email.search("@");
+	if(x==-1){
+		window.alert("Invalid email address");
+		return false;
+	}
+	else{
+		var localPart = email.substr(0,x);
+		var domainPart = email.substr(x+1);
+		var i = 0;
+		while( i<localPart.length ){
+			if (!(localPart.charCodeAt(i)>=48 && localPart.charCodeAt(i)<=57))
+				if(!(localPart.charCodeAt(i)>=65 && localPart.charCodeAt(i)<=90))
+					if(!(localPart.charCodeAt(i)>=97 && localPart.charCodeAt(i)<=122))
+						if(!(localPart.charCodeAt(i)==46||localPart.charCodeAt(i)==95)){
+				window.alert("invalid localPart");
+				return false;
+			}
+			i++;
+		}
+		var x = domainPart.search(".");
+		if(x==-1){
+			window.alert("Invalid email address");
+			return false;
+		}
+		var arr = domainPart.split(".");
+		if((!isAlphabet(arr[0]))||arr[0].length<3){
+			window.alert("Invalid email address");
+			return false;
+		}
+		for(var i  = 1;i<arr.length;i++){
+			if((!isAlphabet(arr[i]))||arr[i].length<2){
+				window.alert("Invalid email address");
+				return false;
+			}
+		}
+	}
+	function isAlphabet(str){
+		for(var i = 0;i<str.length;i++){
+			if(!((str.charCodeAt(i)>=97&&str.charCodeAt(i)<=122)||(str.charCodeAt(i)>=65&&str.charCodeAt(i)<=90))){
+				return false;
+			}
+		}
+		return true;
+	}
+	function encode(str){
+		var x = str.search("<");
+		if(x==-1)	return str;
+		output = "";
+		while(x!=-1){
+			output = output+str.substr(0,x);
+			output = output + "&lt";
+			str = str.substr(x+1);
+			x = str.search("<");
+		}
+		output = output + str;
+		return output;
+	}
+	document.forms["my_form"].text.value = encode(name);
+	document.forms["my_form"].pass.value = encode(password);
+	document.forms["my_form"].email.value = encode(email);
+return true;	
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+To optimize the code it was necessary to first identify the slow part of code. To do so, we change the makefile and added -pg flag to the compiling command.
+Next we executed the ./a.out. It took a while to execute but after execution gmon.out file was created.
+Then we used gprof to identify the slow part of code.
+Run the following command:	gprof a.out > profile.txt
+Now we check the profile.txt file and from the values of time taken in different function in flat profile we concluded that function Monster::computeArmLength() was very slow.
+Now we checked the code of it in monster.cpp
+In that to calculate term*size^3. It is done via 2 for loops. Also later term is multiplied by this and divided by size^2. Therefore we replace this code with just multiplying term by size just once.
+This made the code very fast.
+Now on running the executable we got the following output:
+	Zeltrax proves his loyality, he offers you a $Dino Gem$

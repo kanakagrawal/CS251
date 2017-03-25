@@ -1,0 +1,6 @@
+cf3c122f1dabdc0fc4e1c37a25556bc8
+f24109a62a0422577119abeb0db4f801
+192.168.100.8
+192.168.100.4
+ncat -l > Slowpoke < Bulbasaur
+ncat 192.168.100.8 < Slowpoke > Bulbasaur

@@ -1,0 +1,26 @@
+\documentclass{article}
+\begin{document}
+\newcommand{\fibonacci}[1]{
+	\count255=2
+	\newcount\a
+	\newcount\b
+	\newcount\c
+	\c=1
+	\a=1
+	\b=0
+	\loop
+		\number\c, 
+		\a=\b
+		\b=\c
+		\c=\a
+		\advance \c by \b		
+	\ifnum\count255<#1
+	\advance \count255 by 1
+	\repeat
+	\number\c\\
+}
+\typein[\n]{Find fibonacci series upto how many terms(<=46, >=2)?}
+The first \n \hspace{0.2em} terms of fibonacci series are:
+\newline
+\fibonacci{\n}
+\end{document}

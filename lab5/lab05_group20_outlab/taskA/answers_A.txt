@@ -1,0 +1,14 @@
+Define macros for compiler, commands and target files
+Define all cpp files in a varable CPPS using wildcard function
+Define all object files in OBJS variable
+for target = TARGET and dependencies = object files, Write the corresponding compiling command.
+Now we need to modify object files also if there is any change in any of its corresponding cpp file and depencies in the cpp file.
+For this we will include the command '-include $(OBJS:.o=.d)'.
+The above command creates .d files fo a given .o file such that the .d file contains all the dependencies for that .o file.
+For all .o file as target and the corresponding dependencies as dependency the command to compile and creates .o file is mention.
+Here -MMD flag is set to tell the compiler to include only those dependencies from #include which are user defined,i.e, files included inside <iostream> or any other standard libraries will not be recompiled.
+For example if Example.o depends on Example.cpp and Example.cpp depends on Example2.h and iostream then Example2.h is also included as dependency of Example.o but iostream is not.
+clean is quite straight forward.(.PHONY is used to make sure clean is called irrespective of there already exist a clean file or not)
+
+
+The key thing in this task was to use wildcard, concept of .d and also the special macros '@$' and '@<'.

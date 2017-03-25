@@ -1,0 +1,5 @@
+We compiled the code first.
+It gave error that number of argument for a function processSituation() is not matching. Then we went to the file processSituation.hpp and saw what the other 4 arguments do. We realized that they were sort of dummy argumenets which must satisfy a certain property. So made changes in intelligentReverseSpin.cpp to account for these arguments. After this our code worked fine and gave the following output:
+You're on a roll!!! The whole of $BladeBreakers$ has agreed to join you.
+
+We didn't used Doxyfile anywhere.

@@ -1,0 +1,16 @@
+\documentclass{article}
+\begin{document}
+\newcommand{\factorial}[1]{
+	\count255=1
+	\newcount\f
+	\f=1
+	\loop
+		\multiply \f by \count255
+	\ifnum\count255<#1
+	\advance \count255 by 1
+	\repeat
+	\number\f
+}
+\typein[\n]{Type an integer less than 13 whose factorial you want to calculate?}
+\n!\hspace{0.2em} = \factorial{\n}
+\end{document}

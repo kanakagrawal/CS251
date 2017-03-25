@@ -1,0 +1,17 @@
+Steps to replace a piece of code into a function call:-
+--------------------------------------------------------
+1. Select the desired piece of code.
+2. Right click on the selected text.
+3. Go to Refactor/ExtractMethod.
+4. Write Method name in the box.
+5. Click on OK.
+
+Steps to change the name of class:-
+------------------------------------
+1. Select the name(of function/class) to be changed.
+2. Right click on the selected text.
+3. Go to Refactor/Rename.
+4. Write new name in the box.
+5. Click on OK.
+
+In case of threading, the time required is less as the different threads are running simultaneously. For the image CPU_usage_Threadwise.png we can understand that different threads of the same cose are running simultaneously reducing the total time.

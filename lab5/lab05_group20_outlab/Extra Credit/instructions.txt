@@ -1,0 +1,1 @@
+1. Whenever the game is over box2D window gets closed and GAMEOVER is printed on terminal. To play again you have to run the executable again.

@@ -1,0 +1,9 @@
+\beamer@endinputifotherversion {3.24pt}
+\beamer@sectionintoc {1}{Standardization of data}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Method1}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Method2}{3}{0}{1}
+\beamer@sectionintoc {2}{Rankings}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{Method1}{4}{0}{2}
+\beamer@subsectionintoc {2}{2}{Method2}{5}{0}{2}
+\beamer@subsectionintoc {2}{3}{Method3}{6}{0}{2}
+\beamer@sectionintoc {3}{Inversions}{7}{0}{3}

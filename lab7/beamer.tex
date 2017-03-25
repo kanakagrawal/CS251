@@ -1,0 +1,122 @@
+\documentclass[pdf]{beamer}
+\usepackage{hyperref}
+\mode<presentation>{}
+
+\title{Statistical Model to rank Mutual Fund Companies}
+\date{\today}
+
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\tableofcontents
+\end{frame}
+
+\begin{frame}
+	\section{Standardization of data}
+	\frametitle{Standardization of data}
+	\begin{itemize} 
+		\item Statistics can prove anything you want provided the data is not standardized! Hence its important to standardize the data.
+		\subsection{Method1}
+		\item Standardized each column idependently:
+		\begin{itemize}
+			\item As the given data is already bifurcated in 4 coulmns based on Common Market, Hot Fund, Bonds and Emerging Market we will standardized them independently.
+			\item On running \textbf{Shapiro-Wilk Test} on the given data we got 22 out of 80 coulmns with p-value greater than 0.05, i.e, a fraction of \textbf{0.725} is not normalized.
+		\end{itemize}
+		\subsection{Method2}
+		\item Standardized by combining the data:
+		\begin{itemize}
+			\item Here we will combine the data of 4 columns together.
+			\item On running \textbf{Shapiro-Wilk Test} on the given data we got 0 out of 20 coulmns with p-value greater than 0.05, i.e, a fraction of \textbf{0} is normal.
+		\end{itemize}
+		\item It means the given data binned in different columns like CM, HF, PG and EM is better to work on rather than combining them or we can say that performance numbers are very less mixed up.
+	\end{itemize}
+\end{frame}
+
+\section{Rankings}
+\begin{frame}
+	\frametitle{Rankings}
+	\begin{itemize} 
+		\subsection{Method1}
+			\item Method1
+			\begin{itemize} 
+				\item Here we simple calculate average of scores for each company and rank them.
+				\item The row number of companies and there scores for top 15 companies are given below:
+			\end{itemize}
+			\begin{tabular}{p{3cm} p{3cm} p{3cm}}
+				Rank & Row Number & Score \\
+				1 & 525 & 72.37672\\
+				2 & 477 & 72.07414 \\
+				3 & 253 & 72.06298 \\
+				4 & 101 & 71.84182 \\
+				5 & 358 & 71.81531 \\
+				6 & 207 & 71.3849 \\
+				7 & 334 & 70.85849 \\
+				8 & 179 & 70.61823 \\
+				9 & 13 & 70.49138 \\
+				10 & 519 & 70.48215 \\
+				11 & 24 & 70.38025 \\
+				12 & 145 & 70.3692 \\
+				13 & 103 & 70.35524 \\
+				14 & 497 & 70.25587 \\
+				15 & 576 & 70.13045 \\
+			\end{tabular}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Rankings}
+	\begin{itemize} 
+		\subsection{Method2}
+		% \vspace{-80pt}
+			\item Method2
+			\begin{itemize} 
+				\item To improvise on the previous model here we rank based on taking the best \textit{n} scores for each company
+				\item The row number for top 15 companies based on this model for \textbf{n = 10} are as follows:\\
+				\textit{78 358 293 253 480 101 404 320 145 384 103 477 497 301 317}\\
+				\item The row number for top 15 companies based on this model for \textbf{n = 15} are as follows:\\
+				\textit{253 101  78 317 145 404 301 103 477 480 384 358 497  52 293}\\
+				\item This method of ranking is certainly better than the last one. For ex: in method1 the company with rank1 was row 525. But in the case we don't see row 525 even in the top 15 because company at row 525 has only one data value avaialable which is 100. So even after normalization it has the best value and on calculating avergae over itself it gets rank1. While in method2 this company is not considered in ranking because it doesn't have n data sets. 
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Rankings}
+	\begin{itemize} 
+		\subsection{Method3}
+			\item Method3
+			\begin{itemize} 
+				\item Now let us consider the case if performance number were mixed up
+				\item Here we use the method2 of standardizing data before calculating rank base on best n algorithm.
+				\item The row number for top 15 companies based on this model for \textbf{n = 10} are as follows:\\
+				\textit{253 317 293  78 320 145 497 404 101 315  83 283 477 332 467}\\
+				\item The row number for top 15 companies based on this model for \textbf{n = 15} are as follows:\\
+				\textit{253 317 145 101 293  83 497  78 404 331 320  14 335 237 186}\\ 
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Inversions}
+\begin{frame}
+	\frametitle{Inversions}
+	\begin{itemize} 
+		\item An inversion is when one company is above the other company in one ranking, and below in the second
+		\item The following table contains inversion from some ranking model to other ranking model:
+	\end{itemize}
+	\begin{tabular}{p{3cm} p{3cm} p{3cm}}
+		Model1 & Model2 & Inverisons \\
+		Method2(n=10) & Method1 & 57405\\
+		Method2(n=15) & Method1 & 67468\\
+		Method3(n=10) & Method2(n=10) & 9866\\
+		Method3(n=15) & Method2(n=15) & 5963\\
+		Method3(n=10) & Method1 & 61803\\
+		Method3(n=15) & Method1 & 70643\\
+	\end{tabular}
+\end{frame}
+
+\end{document}

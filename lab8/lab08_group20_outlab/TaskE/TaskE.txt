@@ -1,0 +1,19 @@
+We implemented the following steps to get output if all preflight checks pass:
+	1) Run gdb:				gdb falcon
+	2) set break at main:	b main
+	3) run the code:		run
+	   The code after running when comes to main will halt.
+	4) now set the value of preFlightCheck1 to true:			set preFlightCheck1 = true
+	5) execute a single command and go to next command:			next
+	   now the next command shown is the second if check and not inside the explosion function.
+	6) now agains set preFlightCheck1 back to false.			set preFlightCheck1 = false
+	7) repeat the following steps for preFlighCheck2 and finalFlightCheck by following commands:
+		set preFlightCheck2 = true
+		next
+		set preFlightCheck2 = false
+		set finalFlightCheck = true
+		next
+		set finalFlightCheck = false
+	8) now as we have successfully pass all the pre checks we can continue with our code:		continue
+	9) The code exits normally and gives the following output:
+		You did it!! In recognition of your awesomness Dexter has given you a $Rocket$

@@ -1,0 +1,32 @@
+Create different subclasses of b2BodyDef in dominos.cpp for magnet and metals. The basic ides is to exploit the userData variable of b2BodyDef such that by accessing it we can tell whether a body is attractive magnet, repulsive magnet, metal or none of these(slider and ground also in case of extra credit).
+
+Define fixed boundaries in dominos constructor so that ball doesnot go out of screen.
+
+Define Magnets and metal object in dominos constructor.
+
+Changes for applying force:
+	in cs251_base.cpp add following changes in step function of base_sim_t - 
+		using GetBodyList() function we can access any body of the world.
+		Now go one by one to all bodies and check whether it is a metal or not.
+		if it is a metal go one by one to all magnets(again by using GetBodyList() and checking using userData)
+		For a combination of magnet and metal get the distance between them using position member of body. 
+		using the position apply force on metal depending on whether magnet is attractive or repulsive(again using userdata to see if its attractive or repulsive)
+		keep on doing this till you reach end of the body list.
+
+Changes for keyboard 't' and 'q':
+	**presently on pressing 't' or 'q' the callback keyboard_cb() function gets called which transfer control to keyboard_cb() function in cs251_base.hpp which does nothing**
+	in cs251_base.hpp delete the definition of base_sim_t :: keyboard(unsigned char key) function. leave only the declaration
+	in cs251_base.cpp add base_sim_t :: keyboard(unsigned char key) function with following implementation:
+		if key is q:
+			go to all the bodies of world using GetBodyList()
+			if it is a magnet set userdata such that it becomes attractive magnet.
+		if key is t:
+			go to all the bodies of world using GetBodyList()
+			if it is a repulsive magnet make it attractive
+			if it is a attractive magnet make it repulsive
+
+Changes for mouse click toggle:
+	**presently on clicking mouse the callback mouse_cb function gets called which transfer control to mouse_down() function in cs251_base.hpp which does nothing**
+	in cs251_base.hpp delete the definition of base_sim_t :: mouse_down(const b2Vec2& p) function. leave only the declaration
+	in cs251_base.cpp add base_sim_t :: mouse_down(const b2Vec2& p) function with following implementation:
+		go to each magnet and check if the click co-ordinate lies within the magnets shape. If yes toggles its attractiveness/repulsiveness.

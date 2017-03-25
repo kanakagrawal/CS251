@@ -1,0 +1,6 @@
+Magikarp
+find . -mindepth 1 -maxdepth 1 -type d -exec rm -f -r '{}' \;
+find . -type f -name 'A*' -exec rm -f '{}' \;
+find . -type f -regex './\([1-9]\|1[0-9]\|20\)' -exec rm -f '{}' \;
+find . -type f -name '*.jpg' -exec rm -f '{}' \;
+cat $(ls) > ultraball.html

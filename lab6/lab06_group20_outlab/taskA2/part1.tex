@@ -1,0 +1,20 @@
+\section{Inorder Binary Search Traversal}
+The basic inorder binary search traversal follows the following implementation:
+\begin{itemize}
+	\item Traverse the left subtree by recursively calling the in-order function.
+	\item Display the data part of the root (or current node).
+	\item Traverse the right subtree by recursively calling the in-order function.
+\end{itemize}
+There are many ways to implement it such as by recursion, stack, etc.
+The recursive implementation is very trivial. Following is the method to implement using stacks without recursion:
+\begin{itemize}
+	\item Create an empty stack S.
+	\item Initialize current node as root.
+	\item Push the current node to S and set current = current-$>$left until current is NULL.
+	\item If current is NULL and stack is not empty then \\
+     a) Pop the top item from stack.\\
+     b) Print the popped item, set current = popped item-$>$right \\
+     c) Go to step 3.
+    \item If current is NULL and stack is empty then we are done.	
+\end{itemize}
+\cite{knuth1973vol}

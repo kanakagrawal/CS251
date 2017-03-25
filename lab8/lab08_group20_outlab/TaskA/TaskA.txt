@@ -1,0 +1,17 @@
+First we changed MAX = 100, then run the following commands on the terminal:
+	g++ -pg matDemat.cpp
+	./a.out
+	gpro a.out > a.txt
+
+After this by observing the Flat profile of matDemta.cpp in a.txt we concluded that the getBrick(int,int) function was the slower part of code.
+
+In that part the values of wall[row][column] were assigned as sum of values of scene[i][j] s.t i<=row and j<=column.
+This was previously implemented using double for loop over the values of scene matrix.
+We optimized by using the already calculated values of wall[row-1][column] while calculating wall[row][column].
+By definition wall[row][column] is some of all elements of scene[i][j] with i<=row,j<=columns. It can also be written as sum the following two sums:
+	1) sum of scene[i][j] s.t if row!=0,i<=rows-1,j<=columns(i.e, wall[i][j])  or 0.
+	2) sum of scene[row][j] s.t j<=columns.
+Now implementation of this has only one for loop because the first of the above 2 sums is already known. Hence the code is optimized.
+
+Resetting MAX to 1000 and executing we get the following output:
+	As always Road Runner has rapidly materialised the scene and tricked left you with a stick of  $dynamite$

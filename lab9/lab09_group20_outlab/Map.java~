@@ -1,0 +1,75 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+ 
+class Map 
+{
+    int minDistance(int dist[], Boolean check[], int m){
+        int min = Integer.MAX_VALUE;
+        int min_index=-1;
+
+        for (int v = 0; v < m; v++){
+            if (check[v] == false && dist[v] <= min){
+                min = dist[v];
+                min_index = v;
+            }
+        }
+        return min_index;
+    }
+
+    int dijkstra(int time[][], int source, int target, int m){
+        int dist[] = new int[m];
+        Boolean check[] = new Boolean[m];
+        for (int i = 0; i < m; i++){
+            dist[i] = Integer.MAX_VALUE;
+            check[i] = false;
+        }
+        dist[source] = 0;
+        for(int count = 0; count < m; count++){
+            int u = minDistance(dist,check,m);
+            check[u] = true;
+            for(int v = 0; v < m; v++){
+                if (!check[v] && time[u][v]!=0 && dist[u] != Integer.MAX_VALUE && dist[u]+time[u][v] < dist[v])
+                    dist[v] = dist[u] + time[u][v];
+            }
+            if(u==target){
+                return dist[u];
+            }
+        }
+        return -1;
+        // printSolution(dist, m);
+    }
+ 
+    // Driver method
+    public static void main (String[] args)
+    {
+       try{
+            File file = new File("input.txt");
+            Scanner in = new Scanner(file);
+            int m = in.nextInt();
+            int n = in.nextInt();
+            int s = in.nextInt();
+            int t = in.nextInt();
+            int edgeTime[][] = new int[m][m];
+            for(int i = 0;i<n;i++){
+                int v1 = in.nextInt();
+                int v2 = in.nextInt();
+                int e = in.nextInt();
+                edgeTime[v1-1][v2-1] = e;
+                edgeTime[v2-1][v1-1] = edgeTime[v1-1][v2-1];
+            }
+            for(int i = 1;i<=m;i++){
+                for(int j = 1;j<=m;j++){
+                    // System.out.println(edgeTime[i][j]);
+                }
+            }
+            Map p = new Map();
+            int answer = p.dijkstra(edgeTime, s-1, t-1, m);
+            System.out.println(answer);
+       }
+       catch(Exception e){
+        System.out.println("ASDA");
+       }
+    }
+}
+//This code is contributed by Aakash Hasija

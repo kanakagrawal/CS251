@@ -1,0 +1,35 @@
+Steps to win:
+1)	run the executable on terminal
+2)  Add the character "Zeus".
+3)  (optional :P) Add other characters/items collected from the other 7 tasks.
+4)  Begin Battle.
+5)  Use Zeus to win.
+
+
+How did we came up to this:
+
+At first when we play the game we realized that our HP was way less than Enemy's. Also the attack of our characters/items was not sufficient to finish the enemy. So we thought there must be some character/item which we don't know but which has a great attack strength. So we tried searching the array storing all correct items/characters using gdb. At the end we didn't get the array but got the comparision statements for all the string input we give with correct strings and thus got the hidden item/character. We did the following steps which worked out:
+
+1)  In gdb set break point to main function.
+2)  run the executable
+3)  As the execution enter in main the execution halts.
+4)  Use the step command to check every step of the execution. You will get the following output:
+		printPrompt () at FinalBattle.cpp:104
+5)  Now keep going to next step till the choice is asked. Fill choice 1 since to figure out some hidden character we have to see what happens adter we input a character.
+6)  Next the code enetered the function registerItemOrCharacter ().
+7)  Next we input an incorrect character/item for ex- "Kanak".
+8)  On doing further steps we got comparision statements like this:
+	std::operator==<char, std::char_traits<char>, std::allocator<char> > (__lhs=0x40206c "dynamite", __rhs="Kanak")
+	std::operator==<char, std::char_traits<char>, std::allocator<char> > (__lhs=0x402075 "Blossom", __rhs="Kanak")
+    std::operator==<char, std::char_traits<char>, std::allocator<char> > (__lhs=0x40207d "Rocket", __rhs="Kanak")
+    std::operator==<char, std::char_traits<char>, std::allocator<char> > (__lhs=0x402084 "MysteryMachine", __rhs="Kanak")
+    std::operator==<char, std::char_traits<char>, std::allocator<char> > (__lhs=0x402093 "BladeBreakers", __rhs="Kanak")
+    std::operator==<char, std::char_traits<char>, std::allocator<char> > (__lhs=0x4020a1 "Turbokat", __rhs="Kanak")
+    std::operator==<char, std::char_traits<char>, std::allocator<char> > (__lhs=0x4020aa "DinoGem", __rhs="Kanak")
+    std::operator==<char, std::char_traits<char>, std::allocator<char> > (__lhs=0x4020b2 "Zeus", __rhs="Kanak")
+ 9) The last comparision provided us with a new character/item "Zeus".
+ 10) On trying zeus while playing we figured out it has attack power of 100000 and was alone sufficient to win.
+
+ 11) Later we figured out that there were variables itemsAndCharacters and attack which contain the following:
+ 		itemsAndChearacters = {0x40206c "dynamite", 0x402075 "Blossom", 0x40207d "Rocket", 0x402084 "MysteryMachine", 0x402093 "BladeBreakers", 0x4020a1 "Turbokat", 0x4020aa "DinoGem", 0x4020b2 "Zeus"}
+ 		attack = {100, 90, 200, 10, 20, 120, 150, 100000}

@@ -1,0 +1,7 @@
+The output after running the code is:
+Once again the Swat Cats(Bade Miyan and Chote Miyan) save the Megakat City with the latest weapon upgrade to their $Turbokat$
+
+We used the real time for computing the order. To be accurate one should use sum of system and user time but due to following reasons we used real time:
+1) On saving the value in variables in script it was converting them from 3 decimal places to 2 decimal places and thus there was no significant difference in the two cases.
+2) It was easy to code for real time.
+3) It was also giving correct answer.

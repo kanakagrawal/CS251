@@ -1,0 +1,5 @@
+After trying different distributions for A(x) and N(x), we got best fit curve for the following distributions-
+A(x) = (x * exp( -1*(x**2) / (2*p*p) )  /  2*(p*p) )  where p is parameter of reyleigh distribution.
+    p = 11.5
+N(x)= exp( -1*(x**2) / (2*q*q) ) / (sqrt( 2*pi*q*q))  where q is parameter of gaussian distribution.
+	q = 5.49989 

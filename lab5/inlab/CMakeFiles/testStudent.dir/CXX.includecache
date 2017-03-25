@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kanak/Dropbox/3rdsem/CS251/lab5/inlab/dependency1.cpp
+dependency1.h
+/home/kanak/Dropbox/3rdsem/CS251/lab5/inlab/dependency1.h
+dependency2.h
+/home/kanak/Dropbox/3rdsem/CS251/lab5/inlab/dependency2.h
+
+/home/kanak/Dropbox/3rdsem/CS251/lab5/inlab/dependency1.h
+
+/home/kanak/Dropbox/3rdsem/CS251/lab5/inlab/dependency2.cpp
+dependency2.h
+/home/kanak/Dropbox/3rdsem/CS251/lab5/inlab/dependency2.h
+
+/home/kanak/Dropbox/3rdsem/CS251/lab5/inlab/dependency2.h
+
+/home/kanak/Dropbox/3rdsem/CS251/lab5/inlab/main.cpp
+iostream
+-
+fstream
+-
+ctime
+-
+dependency1.h
+/home/kanak/Dropbox/3rdsem/CS251/lab5/inlab/dependency1.h
+

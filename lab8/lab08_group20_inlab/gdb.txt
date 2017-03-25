@@ -1,0 +1,19 @@
+B.3		gdb prog
+		b calc
+		r
+
+B.5		n
+		p minVal	(output = 4)
+
+B.6		b 11
+
+B.7		p minVal	(output = -11)
+		p A.size()	(output = 1)
+		p A.size() < minVal		(output = true)
+
+B.8		ptype minVal	(output = int)
+		ptype A.size()	(output = unsigned long)
+
+B.9		in B.7 i got minVal = -11 and A.size() = 1 but on executing A.size() < minVal it gave true(1<-11 ==true)
+		in B.8 the type of minVal is int while that of A.size() is "unsigned" long. I've quoted the unsigned because that's the culprit. Actually int uses its very first byte to store its sign when comparing with unsigned long int it got converted to unsigned long int(for comparision). Hence the number -11 got convert to (11+2^31) for comparision which is way bigger than 1(value of A.size()).
+		Hence the condition for entering for loop was true till converted value of minVal(converting to unsigned long) became small than or equal to 1,i.e, for loop got executed for around 2^32-11-1 times

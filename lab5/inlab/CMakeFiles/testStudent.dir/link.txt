@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/testStudent.dir/main.cpp.o CMakeFiles/testStudent.dir/dependency2.cpp.o CMakeFiles/testStudent.dir/dependency1.cpp.o  -o testStudent -rdynamic 

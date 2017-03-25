@@ -1,0 +1,36 @@
+\section{QuickSort}
+\textbf{Divide :} Partition (rearrange) the array A[p...r] into two (possibly empty) subarrays A[p...q-1] and 
+A[q+1...r] such that each element of A[p...q-1] is less than or equal to A[q], which is, in turn, less than or equal to each element of A[q+1...r]. Compute the index q as part of this partitioning procedure.
+\\[0.5em]
+\textbf{Conquer :} Sort the two subarrays A[p...q-1] and A[q+1...r] by recursive calls to quicksort.
+\\[0.5em]
+\textbf{Combine :} Because the subarrays are already sorted, no work is needed to combine them: the entire array A[p...r] is now sorted.
+\\[0.5em]
+The following procedure implements QuickSort.
+\begin{algorithm}
+QUICKSORT(A,p,r)
+\begin{algorithmic}
+	\IF{$p < $ r}
+		\STATE{	q = PARTITION(A,p,r)}
+		\STATE{	QUICKSORT(A,p,q-1)}
+ 		\STATE{	QUICKSORT(A,q+1,r)}
+ 	\ENDIF
+\end{algorithmic}
+To sort an entire array A, the initial call is QUICKSORT(A,1,A.length).\\[0.5em]
+\textbf{Partitioning the array}\\[0.5em]
+The key to the algorithm is the PARTITION procedure, which rearranges the subarray A[p...r] in place.\\[1em]
+PARTITION(A,p,r)
+\begin{algorithmic}
+	\STATE{\textit{x} = A[\textit{r}]}
+	\STATE{\textit{i} = \textit{p - 1}}
+	\FOR{ \textit{j} = \textit{p} \TO \textit{r - 1}}
+		\IF{ $A[\textit{j}] \leq $ \textit{x}}
+		\STATE{		\textit{i} = \textit{i} + \textit{1}}
+		\STATE{		exchange A[\textit{i}] with A[\textit{j}]}
+		\ENDIF
+	\ENDFOR
+	\STATE{exchange A[\textit{i}+1] with A[\textit{r}]}
+	\STATE{\textbf{return} \textit{i} + 1}
+ \end{algorithmic}
+\end{algorithm}
+\cite{hoare1962quicksort}

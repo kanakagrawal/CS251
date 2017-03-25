@@ -1,0 +1,12 @@
+Steps to permanent alias:
+1)	in termainal go to the directory ~
+2)	open .bashrc in any editor. For ex: subl ./.bashrc
+3)  Add the following line in the .bashrc file and then save and close the file.
+		alias omp4j="java -jar ~/Dropbox/3rdsem/CS251/lab9/omp4j-1.2.jar"
+4)	restart the terminal.
+
+
+time for the process:
+	real	0m9.123s
+	user	0m33.688s
+	sys		0m0.280s

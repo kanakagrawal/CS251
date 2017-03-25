@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pokemon</title>
+<style>
+button.accordion{
+	color:red;
+	cursor: pointer;
+	padding: 20px;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+	font-size: 20px;
+	background-color: transparent;
+}
+
+button.accordion.active{
+    background-color: cyan;
+}
+
+button.accordion:hover {
+   	color : black;
+}
+
+div.design{
+	text-align:left;
+	max-height: 0;
+	overflow: hidden;
+	transition: 0.6s ease-in-out;
+	opacity: 0;
+}
+
+div.design.show {
+	opacity: 1;
+	max-height: 500px;
+}
+
+ul{
+	background:  #3399ff;
+	padding: 10px 20px;
+	font-size: 120%;
+}
+
+ul li {
+	margin: 5px;
+}
+</style>
+</head>
+
+<body style="background-image:url('p2.jpg');background-size:1350px 670px;">
+
+<h2> Click on the name of pokemon to get details about it!!!</h2>
+
+<button class="accordion" onclick="myfunction(0)">Gengar</button>
+<div class="design">
+	<ul>
+		<li> Type : Ghost/Poison</li>
+		<li> Final Evolution State : None</li>
+		<li> Attacks : Shadow Ball, Psychic, Confuse Ray, Sludge Bomb </li>       
+	</ul>
+</div>
+
+<button class="accordion" onclick="myfunction(1)">Arcanine
+</button>
+<div class="design">
+	<ul>
+		<li> Type : Fire</li>
+		<li>Final Evolution State : None </li>
+		<li>Attacks : Flamethrower, Extremespeed, Aerial Ace , Flare Blitz</li>
+	</ul>
+</div>
+
+<button class="accordion" onclick="myfunction(2)">Wailmer</button>
+<div class="design">
+	<ul>
+		<li> Type : Water</li>
+		<li> Final Evolution State : Wailord(lvl 40)</li>
+		<li>Attacks : Body Slam, Water Spout, Surf, Rain Dance  </li>
+	</ul>
+</div>
+
+<button class="accordion"  onclick="myfunction(3)">Dragonite</button>
+<div class="design">
+	<ul>
+		<li> Type : Dragon/Flying </li>
+		<li> Final Evolution State : None</li>
+		<li> Attacks : Fly, Hyper beam, Ice beam, Thunder</li>
+	</ul>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i,j;
+for( i=0; i<acc.length; i++){
+	function myfunction(i){
+		acc[i].classList.toggle("active");
+		acc[i].nextElementSibling.classList.toggle("show");
+		for( j=0; j<acc.length; j++){
+			if(j!=i) {
+				acc[j].classList.toggle("active",false);
+				acc[j].nextElementSibling.classList.toggle("show",false);
+			}
+		}
+	}
+}
+</script>
+</body>
+</html>

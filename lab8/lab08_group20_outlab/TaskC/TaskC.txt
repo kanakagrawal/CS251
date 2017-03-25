@@ -1,0 +1,13 @@
+We implemented the following steps to debug dynamo.cpp:
+	1) Run the following command on terminal:
+		g++ -g dynamo.cpp
+		gdb a.out
+	2) now we run the program in gdb.
+	3) It gave segmentation fault. To know where the fault is we used backtrace.
+	4) From the output we understood that the code started executing in min then jumped to initialize function and then to acclerateProtons with arguments (stage=101,paradigmShift=false,head=...).
+	5) Now we check the accelerateProtons function. Since, paradigmShift is false, the execuion jumped to the else part which has a forloop. 
+	6) The condition and incrementation in forloop were such that if stage is positive it will be an infinite loop and will access infinite elements of Head.protonStages which were not infinite.
+	7) The comment line above for loop told that the purpose of forloop as "Increase the number of protons in all the stages less than the current stage" but the loop was doing exactly reverse.
+	8) So we replaced 'i++' with 'i--'.
+	9) Now we quit gdb, compiled the code again and executed. It gave the following output:
+		Awesome!!! $Blossom$ has agreed to join your team.

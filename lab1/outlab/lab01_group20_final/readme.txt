@@ -1,0 +1,18 @@
+GROUP NUMBER: 20
+GROUP MEMBERS: (Kanak Agrawal,150050016) (Yash Wagh,150050023) (Ajay Yadav,150050056)
+
+
+HONOUR CODE : We pledge to our honor that we have not given or received any unauthorized assistance on this assignment.
+
+PERCENTAGE CONTRIBUTION : 
+	Kanak Agrawal(150050016) : 100%
+	Yash Wagh(150050023) : 30%
+	Ajay Yadav(150050056) : 90%
+
+
+REFLECTION ESSAY:
+	Q A1. Same as inlab que.
+	Q A2. There was some problem with defining variables as global. We've written two functions in the code and have taken input twice.
+	Q A3. We couldn't find the coordinates of TIE after time t1. We thought to somehow break the circumference of circle in 100 pieces and make 	  a 2D array containing coordinates of 100 equidistant pts. on circle but couldn't implemented. Also tried doing via slope and other 		  methods.
+	Q B1. Learnt that (summation(ai1*x1)) mod 2 = summation((ai1 mod 2)*xi). After this question was very easy. 
+	Q B2. Used a dummy matrix(test(mxn)) to create A(mnxmn) matrix. After that same as Q B1.

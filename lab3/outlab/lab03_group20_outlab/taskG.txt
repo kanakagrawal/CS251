@@ -1,0 +1,4 @@
+Magikarp
+ls -l -t -r | awk '{print $5}'
+
+# To convert the ascii values to characters use this command : ls -l -t -r | awk '{print $5}' | awk '{printf '%c',$1}'

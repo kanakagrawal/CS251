@@ -1,0 +1,26 @@
+sub_task 1:
+	Basic syntax of makefile-
+		target : dependencies
+		[TAB] command
+	In script approach, the script is executed independent to whether we do changes in the files or not.
+	While in makefile approach, the command is executed only if the dependencies are modified. It is something like an if..else. If any dependency is modified, run the command else don't run.
+	Makefile do this by checking timestamp. make looks at the timestamp of the file(target) and then of the dependecies. If timestamp of dependencies tells that they are modified after creation of target, then the command is executed.
+
+	To run makefile with name makefile_1 run the following command:
+		make -f makefile_1
+
+sub_task 2:
+	on running make first time following commands were executed:
+		g++ -c main.cpp
+		g++ -c dependency1.cpp 
+		g++ -c dependency2.cpp
+		g++ main.o dependency1.o dependency2.o -o out
+	now after making changes in main.cpp only the following commands got executed on running make:
+		g++ -c main.cpp
+		g++ main.o dependency1.o dependency2.o -o out
+	Explanation:
+		When we changed main.cpp, there was no change in other 4 files. So, for target as dependency1.o, the dependencies didn't modify and hence the corresponding command was not executed. Similarly for dependency2.o. While for main.o , one of its dependencies was main.cpp which was modified and hence the corresponding command was executed resulting in modification of main.o which was a dependency for out and hence the command correspong to target out was also executed.
+
+sub_task 3:
+	On running ./out, a file named clean gets created. Therefore, when we run make clean, the computer find a target file named 'clean' without any dependencies. Now, as it isn't dependent on any thing the command below will never be executed as per the timestamp algorithm followed(mentioned above). Now, when we do .PHONY : clean - 
+	make runs its recipe unconditionally, regardless of whether a file with that name exists or what its last-modification time is. Therefore, the command under target clean gets executed and we get our desired output.

@@ -1,0 +1,3 @@
+Tokyo
+/home/kanak/Dropbox/3rdsem/CS251/lab3/outlab/Earth/Asia/Japan
+find -type f -size +50k -size -100k -iname "t*" -perm u=r -not -perm o=r,g=r -not -writable -not -executable

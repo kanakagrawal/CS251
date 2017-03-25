@@ -1,0 +1,9 @@
+Hawlucha
+vim corruptedPokémon
+#the following 5 commands are to be written in vim editor
+	:%s/\(flying\|fighting\)/255 0 0/g
+	:%s/\(Atk\|Sp\.A\|Def\|Sp\.D\):1[0-9][0-9]/255 8 153/g
+	:%s/HP-\(\([0-9]\|[1-9][0-9]\|[1-9][0-9][0-9]\)\)\/\([0-9]\|[1-9][0-9]\|[1-9][0-9][0-9]\)/\1/g
+	:w
+	:q
+# Now open the corruptedPokémon image to get Hawlucha Pokemon

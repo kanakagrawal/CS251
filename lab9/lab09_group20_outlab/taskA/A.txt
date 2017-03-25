@@ -1,0 +1,17 @@
+Steps:
+1) Downloaded Azkaban.zip
+2) Start eclipse
+3) Open Azkaban project in eclipse via following steps:
+	a) go to file>import.
+	b) Under the General tab select "Existing projects in Workspace"
+	c) Select the archive file option and browse to the zip file.
+4) We need to change the JRE system library. So go the the JRE system library in Project and explorer. Right click and select properties.
+5) Change the system library to alternate JRE and select the latest java-openjdk.
+6) Go to the code in Sort.java and correct some variable name errors.
+Now the code is error free(syntax wise) and gives output sirius is criminal.
+7) To debug we use toggle breakpoints and different lines in the code and then run the code in debug mode. To do this use the following steps:
+	a) to toggle breakpoint at any line right click at its very legft point and select toggle breakpoint.
+	b) After setting some breakpoints go to the file in project explorer right click and select debug as>java application.
+	c) Now you will get a debug mode in which the value of variables at the break point can be seen
+	Now use F5,F6,F7,F8 for commands such as step, next, continue, etc.(similar to gdb).
+8) Once the debugging is done. Save and now export the project and then compress it.

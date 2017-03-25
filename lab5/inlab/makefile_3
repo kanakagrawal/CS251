@@ -1,0 +1,12 @@
+all : out
+out : main.o dependency1.o dependency2.o
+	g++ main.o dependency1.o dependency2.o -o out
+main.o : main.cpp dependency1.h
+	g++ -c main.cpp
+dependency1.o : dependency1.cpp dependency1.h
+	g++ -c dependency1.cpp 
+dependency2.o : dependency2.cpp dependency2.h
+	g++ -c dependency2.cpp
+.PHONY : clean
+clean :	
+	rm -i *.o out

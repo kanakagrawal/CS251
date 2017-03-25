@@ -1,0 +1,36 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{algorithm}
+\usepackage{ifthen}
+\usepackage{hyperref}
+\usepackage[noend]{algorithmic}
+\algsetup{indent=3mm} % controls the indentation
+\renewcommand\algorithmicthen{} % remove 'then' in algorithmic
+
+\newcommand{\filename}[1]{
+	\ifthenelse{\equal{#1}{part1}}{\include{#1}}{}
+	\ifthenelse{\equal{#1}{part2}}{\include{#1}}{}
+	\ifthenelse{\equal{#1}{part3}}{\include{#1}}{}
+	\ifthenelse{\equal{#1}{ part1}}{\include{part1}}{}
+	\ifthenelse{\equal{#1}{ part2}}{\include{part2}}{}
+	\ifthenelse{\equal{#1}{ part3}}{\include{part3}}{}
+}
+
+\makeatletter
+\newcommand\myfunc[1]{\@for\tmp:=#1\do{\func{\tmp}}}
+\let\func\filename
+
+
+\begin{document}
+\typein[\files]{Which files would you like to compile?}
+
+\ifthenelse{\equal{\files}{all}}{
+	\include{part1}
+	\include{part2}
+	\include{part3}
+}
+{
+	\myfunc{\files}
+}
+\bibliography{biblio}
+\bibliographystyle{apalike}
+\end{document}

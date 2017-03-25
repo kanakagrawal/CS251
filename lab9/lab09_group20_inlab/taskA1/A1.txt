@@ -1,0 +1,15 @@
+Perform the following steps to execute math.java in Eclipse:
+1)	Open Eclipse
+2)	Create a New java project.
+3)	Give any name to the project
+4)  Add a class named math to the project with default package
+5)  Add a file in the Project folder(not in the src folder) named input.txt
+6)  Copy past the input in input.txt and code in math.java inside /src folder.
+7)  Run the project
+
+A file named output.txt will be formed inside the project folder with the desired output.
+
+
+Eclipse place the source files in a directly named 'src' inside the project directory.
+The executables are made inside the directory "bin" in the project directory.
+The classpath is till the 'bin' directory.
